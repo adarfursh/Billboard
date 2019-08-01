@@ -1,0 +1,58 @@
+{% load static %}
+
+<!--<!DOCTYPE html>-->
+<html lang="en">
+
+<head>
+    <title>Billboard Application</title>
+    <!-- <link rel="stylesheet" href="styles.css"> -->
+    <link href="https://fonts.googleapis.com/css?family=Patua+One&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            background: linear-gradient(-45deg, #f32c1af5 24%, rgba(0, 0, 0, 0.938) 90%);
+            font-family: 'Patua One', cursive;
+            color: rgb(243, 243, 246);
+            text-shadow: 2px 2px rgba(241, 99, 4, 0.74)
+
+        }
+        ul{
+            list-style-type: none;
+            
+        }
+        li{
+            padding: 0.2vh;
+            opacity: 0.8;
+            
+        }
+        h1{
+            text-align: center;
+            text-decoration: underline;
+            text-decoration-color: rgb(0, 114, 114);
+            opacity: 0.;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div>
+
+        <h1>Billboard Posts:</h1>
+
+        {% for p in posts %}
+        <ul>
+            <li>{{p.post_title}}</li>
+            <li>{{p.post_content}}</li>
+            <li> {{p.pub_date}}</li>
+            <li>{{p.post_author}}</li>
+            <br>
+        </ul>
+        {% endfor %}
+
+    </div>
+
+</body>
+
+</html>
