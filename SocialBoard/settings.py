@@ -120,8 +120,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 LOGOUT_REDIRECT_URL = '/welcome/'
-LOGIN_REDIRECT_URL = '/mysite/'
-LOGIN_URL = '/login/'
+
+LOGIN_REDIRECT_URL = '/billboard/posts/'
+LOGIN_URL = '/billboard/login/'
 
 STATIC_URL = '/static/'
 

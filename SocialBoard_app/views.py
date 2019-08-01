@@ -6,50 +6,48 @@ from .models import Post
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.forms import UserCreationForm
 from django.core.urlresolvers import reverse
+from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
 
-
+@login_required
 def list(request):
-    try:
-        posts = Post.objects.all()
-    except Post.DoesNotExist:
-        raise Http404("Question does not exist")
+    posts = Post.objects.all()
     return render(request, 'billboard/list.html', {'posts': posts})
 
 
-def add(request):
-    item = request.GET.get('item', '')
-    status = 409
-    if item in posts:
-        msg: "post exists"
-    else:
-        posts.append(item)
-        msg: "post created"
-        status = 201
-    return JsonResponse({"msg": msg}, status=status)
+# def add(request):
+#     item = request.GET.get('item', '')
+#     status = 409
+#     if item in posts:
+#         msg: "post exists"
+#     else:
+#         posts.append(item)
+#         msg: "post created"
+#         status = 201
+#     return JsonResponse({"msg": msg}, status=status)
 
 
-def get(request):
-    item = request.GET.get('item', '')
-    if item in posts:
-        return HttpResponse(item)
-    else:
-        raise Http404("No such item")
+# def get(request):
+#     item = request.GET.get('item', '')
+#     if item in posts:
+#         return HttpResponse(item)
+#     else:
+#         raise Http404("No such item")
 
-def login (request):
-    if request.POST:
-        username= request.POST["username"]
-        password= request.POST["password"]
-        user = authenticate (request, username= username,password= password)
-        if user is not None:
-                return render(request, "billboard/success.html")
-        else:
-            return HttpResponse("<h1>You are not registered.</h1>")
-
-    else:
-        return render(request, 'billboard/login.html')
+# def login (request):
+#     if request.POST:
+#         username= request.POST["username"]
+#         pass uword= request.POST["password"]
+#         user = authenticate (request, username=sername,password= password)
+#         if user is not None:
+#                 return render(request, "billboard/success.html")
+#         else:
+#             return HttpResponse("<h1>You are not registered.</h1>")
+#
+#     else:
+#         return render(request, 'registration/login.html')
 
 
 def register(request):
@@ -62,7 +60,7 @@ def register(request):
     else:
         form = UserCreationForm()
     return render(request,
-        "billboard/register.html",
+        "biilboard/register.html",
         { "form": form }
     )
 
