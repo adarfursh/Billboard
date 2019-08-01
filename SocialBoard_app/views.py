@@ -60,7 +60,7 @@ def register(request):
     else:
         form = UserCreationForm()
     return render(request,
-        "biilboard/register.html",
+        "registration/register.html",
         { "form": form }
     )
 
