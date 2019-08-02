@@ -36,18 +36,6 @@ def list(request):
 #     else:
 #         raise Http404("No such item")
 
-# def login (request):
-#     if request.POST:
-#         username= request.POST["username"]
-#         pass uword= request.POST["password"]
-#         user = authenticate (request, username=sername,password= password)
-#         if user is not None:
-#                 return render(request, "billboard/success.html")
-#         else:
-#             return HttpResponse("<h1>You are not registered.</h1>")
-#
-#     else:
-#         return render(request, 'registration/login.html')
 
 
 def register(request):
